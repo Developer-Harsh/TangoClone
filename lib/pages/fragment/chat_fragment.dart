@@ -182,6 +182,8 @@ class ChatFragment extends StatelessWidget {
                   ),
                 ],
               ),
+
+              // we need to complete this layout also for chat list
             ],
           ),
         ],

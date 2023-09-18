@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tango/pages/home/home.dart';
+import 'package:tango/utils/preferences.dart';
 
 import 'pages/splash.dart';
 
 void main() {
+  WidgetsFlutterBinding();
+  EasyPrefs.instance.init();
   runApp(const MyApp());
 }
 
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
       title: "Starline",
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => HomePage(),
+        '/': (context) => SplashPage(),
       },
     );
   }

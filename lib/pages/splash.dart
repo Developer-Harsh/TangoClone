@@ -1,17 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:tango/pages/account/my_account.dart';
+import 'package:tango/pages/home/home.dart';
+import 'package:tango/utils/preferences.dart';
 import '../utils/colors.dart';
 import '../widgets/splash_img.dart';
 import './account/onboard.dart';
 
 class SplashPage extends StatelessWidget {
+  bool isDevelopment = true;
+
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => OnboardPage()),
-      );
-    });
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => isDevelopment == true
+                ? MyAccountPage()
+                : EasyPrefs.instance.getBool('isOnboarded') == true
+                    ? const HomePage()
+                    : OnboardPage(),
+          ),
+        );
+      },
+    );
 
     return Scaffold(
       backgroundColor: UIColors.scaffold,

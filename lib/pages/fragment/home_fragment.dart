@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tango/pages/notification/notifications.dart';
 import 'package:tango/utils/colors.dart';
 
 import 'package:http/http.dart' as http;
@@ -11,6 +12,7 @@ import 'package:tango/utils/config.dart';
 import '../../models/LiveUsers.dart';
 import '../../widgets/grad_circle_button.dart';
 import '../../widgets/user_list.dart';
+import '../leaderboard/leaderboard.dart';
 
 class HomeFragment extends StatelessWidget {
   //const HomeFragment({super.key});
@@ -82,30 +84,60 @@ class HomeFragment extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            right: 14,
+                        InkWell(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              right: 14,
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/icons/leaderboard.svg',
+                              width: 24,
+                              height: 24,
+                            ),
                           ),
+                          onTap: () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LeaderboardPage(),
+                              ),
+                            ),
+                          },
+                        ),
+                        InkWell(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              right: 14,
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/icons/feeds.svg',
+                              width: 24,
+                              height: 24,
+                            ),
+                          ),
+                          onTap: () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => NotificationsPage(),
+                              ),
+                            ), 
+                          },
+                        ),
+                        InkWell(
                           child: SvgPicture.asset(
-                            'assets/icons/leaderboard.svg',
+                            'assets/icons/notification.svg',
                             width: 24,
                             height: 24,
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            right: 14,
-                          ),
-                          child: SvgPicture.asset(
-                            'assets/icons/feeds.svg',
-                            width: 24,
-                            height: 24,
-                          ),
-                        ),
-                        SvgPicture.asset(
-                          'assets/icons/notification.svg',
-                          width: 24,
-                          height: 24,
+                          onTap: () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => NotificationsPage(),
+                              ),
+                            ),
+                          },
                         ),
                       ],
                     ),

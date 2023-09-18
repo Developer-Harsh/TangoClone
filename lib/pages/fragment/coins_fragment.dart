@@ -11,6 +11,7 @@ import 'package:tango/utils/config.dart';
 
 import '../../models/CoinsPurchase.dart';
 import '../../widgets/grad_button.dart';
+import '../coins/all_coins_page.dart';
 
 class CoinsFragment extends StatefulWidget {
   const CoinsFragment({super.key});
@@ -32,7 +33,7 @@ class _CoinsFragmentState extends State<CoinsFragment>
       throw Exception('Failed to load data');
     }
   }
-                            
+
   List<dynamic> purchaseCoinsList = [];
   int randomSectorIndex = -1;
   List<double> sectorRadians = [];
@@ -591,7 +592,13 @@ class _CoinsFragmentState extends State<CoinsFragment>
                                 ),
                                 TextButton(
                                   onPressed: () => {
-                                    // here we will open All Coins Screen
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const AllCoinsPage(),
+                                      ),
+                                    ),
                                   },
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,

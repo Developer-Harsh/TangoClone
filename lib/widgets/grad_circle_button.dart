@@ -6,12 +6,16 @@ class GradientIconButton extends StatelessWidget {
   final String svgAsset;
   final Color iconColor;
   final Function onPressed;
+  final double? width;
+  final double? height;
 
   GradientIconButton({
     required this.gradientColors,
     required this.svgAsset,
     required this.iconColor,
     required this.onPressed,
+    this.width,
+    this.height,
   });
 
   @override
@@ -21,8 +25,8 @@ class GradientIconButton extends StatelessWidget {
         onPressed();
       },
       child: Container(
-        width: 50.0,
-        height: 50.0,
+        width: (width != null) ? width : 50.0,
+        height: (height != null) ? width : 50.0,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           gradient: LinearGradient(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tango/pages/fragment/search_user.dart';
 import 'package:tango/utils/colors.dart';
 
 import 'package:http/http.dart' as http;
@@ -104,44 +105,54 @@ class _ExploreFragmentState extends State<ExploreFragment>
                       ),
                     ),
                   ),
-                  Container(
-                    width: 163,
-                    decoration: BoxDecoration(
-                      color: UIColors.box_color,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 13,
-                        right: 13,
-                        top: 7,
-                        bottom: 7,
+                  InkWell(
+                    child: Container(
+                      width: 163,
+                      decoration: BoxDecoration(
+                        color: UIColors.box_color,
+                        borderRadius: BorderRadius.circular(50),
                       ),
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/icons/search.svg',
-                            width: 16,
-                            height: 16,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              left: 7,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 13,
+                          right: 13,
+                          top: 7,
+                          bottom: 7,
+                        ),
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/icons/search.svg',
+                              width: 16,
+                              height: 16,
                             ),
-                            child: Text(
-                              'Search...',
-                              style: TextStyle(
-                                fontFamily: GoogleFonts.getFont('Readex Pro')
-                                    .fontFamily,
-                                fontSize: 14,
-                                color: UIColors.lowText,
-                                fontWeight: FontWeight.w200,
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: 7,
+                              ),
+                              child: Text(
+                                'Search...',
+                                style: TextStyle(
+                                  fontFamily: GoogleFonts.getFont('Readex Pro')
+                                      .fontFamily,
+                                  fontSize: 14,
+                                  color: UIColors.lowText,
+                                  fontWeight: FontWeight.w200,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
+                    onTap: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SearchPage(),
+                        ),
+                      ),
+                    },
                   ),
                   Padding(
                     padding: EdgeInsets.only(
@@ -190,21 +201,143 @@ class _ExploreFragmentState extends State<ExploreFragment>
             controller: _tabController,
             tabs: [
               Tab(
-                text: 'Artist',
+                child: Container(
+                  padding: EdgeInsets.only(
+                    left: 5,
+                    right: 5,
+                  ),
+                  child: Row(
+                    children: [
+                      if (_tabController.index == 0)
+                        SvgPicture.asset(
+                          'assets/icons/artist.svg',
+                          width: 18,
+                          height: 18,
+                          color: (_tabController.index == 1)
+                              ? UIColors.lowText
+                              : UIColors.pink,
+                        ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 5,
+                        ),
+                        child: Text('Artist'),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               Tab(
-                text: 'Nearby',
+                child: Container(
+                  padding: EdgeInsets.only(
+                    left: 5,
+                    right: 5,
+                  ),
+                  child: Row(
+                    children: [
+                      if (_tabController.index == 1)
+                        SvgPicture.asset(
+                          'assets/icons/nearby.svg',
+                          width: 18,
+                          height: 18,
+                          color: (_tabController.index == 2)
+                              ? UIColors.lowText
+                              : UIColors.pink,
+                        ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 5,
+                        ),
+                        child: Text('Nearby'),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               Tab(
-                text: 'Populars',
+                child: Container(
+                  padding: EdgeInsets.only(
+                    left: 5,
+                    right: 5,
+                  ),
+                  child: Row(
+                    children: [
+                      if (_tabController.index == 2)
+                        SvgPicture.asset(
+                          'assets/icons/popular.svg',
+                          width: 18,
+                          height: 18,
+                          color: (_tabController.index == 1)
+                              ? UIColors.lowText
+                              : UIColors.pink,
+                        ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 5,
+                        ),
+                        child: Text('Popular'),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               Tab(
-                text: 'New',
+                child: Container(
+                  padding: EdgeInsets.only(
+                    left: 5,
+                    right: 5,
+                  ),
+                  child: Row(
+                    children: [
+                      if (_tabController.index == 3)
+                        SvgPicture.asset(
+                          'assets/icons/new.svg',
+                          width: 18,
+                          height: 18,
+                          color: (_tabController.index == 1)
+                              ? UIColors.lowText
+                              : UIColors.pink,
+                        ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 5,
+                        ),
+                        child: Text('New'),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               Tab(
-                text: 'Rising Stars',
+                child: Container(
+                  padding: EdgeInsets.only(
+                    left: 5,
+                    right: 5,
+                  ),
+                  child: Row(
+                    children: [
+                      if (_tabController.index == 4)
+                        SvgPicture.asset(
+                          'assets/icons/risings.svg',
+                          width: 18,
+                          height: 18,
+                          color: (_tabController.index == 1)
+                              ? UIColors.lowText
+                              : UIColors.pink,
+                        ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 5,
+                        ),
+                        child: Text('Rising Star'),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
+            isScrollable: true,
+            physics: ScrollPhysics(),
             indicator: BoxDecoration(
               color: Colors.transparent,
             ),
